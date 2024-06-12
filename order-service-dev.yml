@@ -1,13 +1,13 @@
 spring:
   datasource:
     url: jdbc:mysql://localhost:3306/ordercgidevdb?allowPublicKeyRetrieval=true&useSSL=false&createDatabaseIfNotExist=true
-    username: root
-    password: root
+    username: newuser
+    password: password
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
       ddl-auto: update
-    show-sql: true
+    show-sql: true #it will print all auto generated sql sts from the jpa.
     properties:
       hibernate:
         format_sql: true
@@ -15,6 +15,11 @@ spring:
 eureka:
   client:
     service-url:
-      defaltZone: http://localhost:8761/eureka
+      defaultZone: http://localhost:8761/eureka
   instance:
     instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
